@@ -4,7 +4,9 @@ use std::fmt;
 use petgraph::prelude::DiGraph;
 use petgraph::algo::all_simple_paths;
 
-struct MyNode {}
+struct MyNode {
+    name: String
+}
 
 struct MyEdge {
     ix: u32
@@ -12,14 +14,14 @@ struct MyEdge {
 
 impl Default for MyNode {
     fn default() -> Self {
-        Self {}
+        Self { name: "default name".to_string() }
     }
 }
 
 impl fmt::Debug for MyNode {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_tuple("")
-         .field(&"node")
+         .field(&self.name)
          .finish()
     }
 }
